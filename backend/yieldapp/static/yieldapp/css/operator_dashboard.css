@@ -1,0 +1,40 @@
+:root {
+    --bg-dark: #111827;
+    --card-dark: #1F2937;
+    --text-light: #E5E7EB;
+    --text-muted: #9CA3AF;
+    --accent-gold: #FFC107;
+    --status-completed: #28a745;
+    --status-active: #007bff;
+    --status-locked: #4B5563;
+}
+body { background-color: var(--bg-dark); color: var(--text-light); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; display: flex; }
+.sidebar { width: 280px; background-color: var(--card-dark); height: 100vh; padding: 20px; box-sizing: border-box; border-right: 1px solid #374151; display: flex; flex-direction: column; }
+.sidebar h2 { color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); padding-bottom: 10px; margin-top: 0; }
+.sidebar ul { list-style-type: none; padding: 0; margin: 0; flex-grow: 1; overflow-y: auto; }
+.sidebar li a { display: block; color: var(--text-light); text-decoration: none; padding: 15px; border-radius: 8px; margin-bottom: 10px; background-color: #374151; transition: all 0.2s ease-in-out; }
+.sidebar li a:hover, .sidebar li a.active { background-color: var(--accent-gold); color: var(--bg-dark); font-weight: bold; transform: translateX(5px); }
+.sidebar .new-batch-btn { text-decoration:none; color: white; background-color: var(--status-completed); padding: 15px; display: block; text-align: center; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+.main-content { flex-grow: 1; padding: 40px; overflow-y: auto; height: 100vh; box-sizing: border-box; }
+.process-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.process-card { background-color: var(--card-dark); border-radius: 8px; padding: 20px; text-align: center; border-left: 5px solid; transition: all 0.3s ease; }
+.process-card h3 { margin-top: 0; color: var(--text-light); }
+.process-card p { font-size: 1.5em; font-weight: bold; color: white; margin: 10px 0; }
+.process-card .status { padding: 5px 10px; border-radius: 5px; font-size: 0.8em; font-weight: bold; color: white; display: inline-block; margin-top: 15px; }
+.process-card.completed { border-color: var(--status-completed); }
+.process-card.completed .status { background-color: var(--status-completed); }
+.process-card.active { border-color: var(--status-active); cursor: pointer; transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 123, 255, 0.4); }
+.process-card.active:hover { box-shadow: 0 0 25px rgba(0, 123, 255, 0.7); }
+.process-card.active .status { background-color: var(--status-active); }
+.process-card.locked { border-color: var(--status-locked); opacity: 0.6; }
+.process-card.locked .status { background-color: var(--status-locked); }
+.process-card a { text-decoration: none; color: inherit; display: block; }
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); }
+.modal-content { background-color: var(--card-dark); margin: 10% auto; padding: 30px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 10px; position: relative; color: var(--text-light); animation: fadeIn 0.3s; }
+@keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+.close-button { color: #aaa; position: absolute; top: 10px; right: 25px; font-size: 28px; font-weight: bold; }
+.close-button:hover, .close-button:focus { color: white; text-decoration: none; cursor: pointer; }
+.modal-content form p { display: flex; flex-direction: column; }
+.modal-content form label { margin-bottom: 5px; color: var(--text-muted); }
+.modal-content form input, .modal-content form select { background-color: var(--bg-dark); color: var(--text-light); border: 1px solid #4B5563; padding: 10px; border-radius: 5px; margin-bottom: 10px; width: 100%; box-sizing: border-box; }
+.modal-content form button { width: 100%; padding: 12px; margin-top: 15px; background-color: var(--status-active); color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }

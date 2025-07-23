@@ -1,0 +1,8 @@
+<h1>Edit Produk: {{ form.instance.name }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+    <a href="{% url 'product_list' %}">Batal</a>
+</form>

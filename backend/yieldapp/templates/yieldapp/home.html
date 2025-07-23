@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Performance Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --bg-dark: #111827;
+            --card-dark: #1F2937;
+            --border-color: #374151;
+            --text-light: #E5E7EB;
+            --text-muted: #9CA3AF;
+            --accent-gold: #FFC107;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+        }
+
+        .card {
+            background-color: var(--card-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-gold);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">Batch Performance Dashboard</h1>
+        <p class="subtitle">Pilih peran Anda untuk melanjutkan</p>
+
+        <div class="card-grid">
+            <a href="{% url 'product_list' %}" class="card">
+                <div class="card-icon">🗂️</div>
+                <h2>MSTD</h2>
+                <p>Kelola data master produk dan atur standar target untuk Yield dan parameter lainnya.</p>
+            </a>
+
+            <a href="{% url 'operator_dashboard' %}" class="card">
+                <div class="card-icon">👷</div>
+                <h2>Operator</h2>
+                <p>Input data hasil produksi harian dan lacak progres batch yang sedang berjalan.</p>
+            </a>
+
+            <a href="{% url 'yield_dashboard' %}" class="card">
+                <div class="card-icon">📊</div>
+                <h2>Manajemen</h2>
+                <p>Lihat ringkasan performa Yield dari semua batch yang telah selesai diproduksi.</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

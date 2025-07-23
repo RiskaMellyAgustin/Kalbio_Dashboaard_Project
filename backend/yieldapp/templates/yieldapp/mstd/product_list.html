@@ -1,0 +1,36 @@
+<h1>Master Data Produk (MSTD)</h1>
+
+<h2>Tambah Produk Baru</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Simpan Produk Baru</button>
+</form>
+
+<hr>
+
+<h2>Daftar Produk & Target</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Nama Produk</th>
+            <th>Theoretical Yield (pcs)</th>
+            <th>Target Yield (%)</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.theoritical_yield_pcs }}</td>
+            <td>{{ product.target_yield_percent }}%</td>
+            <td><a href="{% url 'product_edit' product.pk %}">Edit</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Belum ada data produk.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
